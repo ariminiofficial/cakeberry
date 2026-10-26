@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cakeberry — Pâtisserie and bakery, Nagpur</title>
+  <meta name="description"
+    content="Cakeberry is a 100% vegetarian pâtisserie and bakery with three boutiques in Nagpur: Prem Nagar, Golibar Chowk and Sakkardara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F6F1EE;
+      --bg2: #EDE4E0;
+      --ink: #26101A;
+      --mute: #7A6670;
+      --berry: #6A1128;
+      --line: rgba(38, 16, 26, .16);
+      --on-berry: #F6F1EE;
+      --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #14080C;
+        --bg2: #1D0E14;
+        --ink: #F2E8E5;
+        --mute: #A8939B;
+        --berry: #E08AA0;
+        --line: rgba(242, 232, 229, .16);
+        --on-berry: #14080C;
+        color-scheme: dark
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #14080C;
+      --bg2: #1D0E14;
+      --ink: #F2E8E5;
+      --mute: #A8939B;
+      --berry: #E08AA0;
+      --line: rgba(242, 232, 229, .16);
+      --on-berry: #14080C;
+      color-scheme: dark
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px)
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 300 17px/1.65 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--berry);
+      outline-offset: 3px
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 64px)
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1
+    }
+
+    /* header */
+    header {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      height: env(safe-area-inset-top, 0px);
+      background: var(--bg);
+      z-index: 60
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 30px;
+      letter-spacing: -.01em
+    }
+
+    nav {
+      display: flex;
+      gap: clamp(18px, 3vw, 40px);
+      font-size: 14px
+    }
+
+    nav a {
+      color: var(--mute);
+      transition: color .2s
+    }
+
+    nav a:hover {
+      color: var(--ink)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: var(--berry);
+      color: var(--on-berry);
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform .3s var(--ease), opacity .2s
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: .92
+    }
+
+    .btn.ghost {
+      background: none;
+      color: var(--ink);
+      border: 1px solid var(--line)
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--ink)
+    }
+
+    @media(max-width:820px) {
+      nav {
+        display: none
+      }
+    }
+
+    /* hero */
+    .hero {
+      padding: clamp(48px, 8vw, 110px) 0 clamp(56px, 8vw, 110px)
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: clamp(32px, 6vw, 96px);
+      align-items: end
+    }
+
+    .hero h1 {
+      font-size: clamp(54px, 9.4vw, 152px);
+      line-height: .92;
+      margin-bottom: 36px
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--berry);
+      font-style: italic
+    }
+
+    .hero p.lead {
+      max-width: 46ch;
+      color: var(--mute);
+      font-size: 19px;
+      margin-bottom: 36px
+    }
+
+    .acts {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .arch {
+      aspect-ratio: 3/4;
+      border-radius: 999px 999px 6px 6px;
+      background: linear-gradient(180deg, var(--bg2), color-mix(in srgb, var(--berry) 22%, var(--bg2)));
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 12% 10% 0;
+      overflow: hidden
+    }
+
+    .arch svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      color: var(--berry)
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: clamp(48px, 7vw, 96px);
+      padding-top: 28px;
+      border-top: 1px solid var(--line)
+    }
+
+    .facts div {
+      font-size: 15px;
+      color: var(--mute)
+    }
+
+    .facts b {
+      display: block;
+      font: 400 26px/1.15 var(--serif);
+      color: var(--ink);
+      margin-bottom: 4px
+    }
+
+    @media(max-width:820px) {
+      .hero-grid {
+        grid-template-columns: 1fr
+      }
+
+      .arch {
+        max-width: 340px
+      }
+
+      .facts {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .rise {
+      animation: rise 1.1s var(--ease) both
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* sections */
+    section {
+      padding: clamp(72px, 10vw, 150px) 0
+    }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: clamp(40px, 6vw, 80px)
+    }
+
+    .sec-head h2 {
+      font-size: clamp(38px, 5.6vw, 84px)
+    }
+
+    .sec-head p {
+      color: var(--mute);
+      max-width: 44ch;
+      justify-self: end
+    }
+
+    @media(max-width:820px) {
+      .sec-head {
+        grid-template-columns: 1fr
+      }
+
+      .sec-head p {
+        justify-self: start
+      }
+    }
+
+    /* craft */
+    .craft {
+      background: var(--bg2)
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line)
+    }
+
+    .col {
+      padding: 36px clamp(0px, 2vw, 32px) 12px 0;
+      border-right: 1px solid var(--line)
+    }
+
+    .col+.col {
+      padding-left: clamp(0px, 2vw, 32px)
+    }
+
+    .col:last-child {
+      border-right: 0
+    }
+
+    .col h3 {
+      font-size: 38px;
+      margin-bottom: 16px
+    }
+
+    .col p {
+      color: var(--mute);
+      margin-bottom: 20px;
+      max-width: 38ch
+    }
+
+    .col ul {
+      list-style: none;
+      font-size: 15px
+    }
+
+    .col li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    @media(max-width:820px) {
+      .cols {
+        grid-template-columns: 1fr
+      }
+
+      .col,
+      .col+.col {
+        padding: 32px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line)
+      }
+    }
+
+    /* menu */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px
+    }
+
+    .f {
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--mute);
+      transition: all .25s
+    }
+
+    .f:hover {
+      color: var(--ink);
+      border-color: var(--ink)
+    }
+
+    .f[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink)
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: clamp(16px, 3vw, 40px);
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+      transition: padding .4s var(--ease), color .2s
+    }
+
+    .row:last-child {
+      border-bottom: 1px solid var(--line)
+    }
+
+    .row:hover {
+      padding-left: 16px
+    }
+
+    .row:hover .rn {
+      color: var(--berry)
+    }
+
+    .rn {
+      font: 400 clamp(26px, 3.4vw, 44px)/1.1 var(--serif);
+      transition: color .2s
+    }
+
+    .rd {
+      display: block;
+      font: 300 15px/1.5 var(--sans);
+      color: var(--mute);
+      margin-top: 6px;
+      max-width: 60ch
+    }
+
+    .rp {
+      font: 400 clamp(24px, 2.6vw, 34px)/1 var(--serif);
+      text-align: right;
+      white-space: nowrap
+    }
+
+    .rp small {
+      display: block;
+      font: 300 12px/1.4 var(--sans);
+      color: var(--mute);
+      margin-top: 4px
+    }
+
+    .rc {
+      font-size: 14px;
+      color: var(--berry);
+      font-weight: 500
+    }
+
+    @media(max-width:700px) {
+      .row {
+        grid-template-columns: auto 1fr auto
+      }
+
+      .rc {
+        display: none
+      }
+    }
+
+    .th {
+      width: clamp(72px, 9vw, 112px);
+      aspect-ratio: 1;
+      border-radius: 14px;
+      background: var(--bg2);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .th svg {
+      width: 86%;
+      height: auto;
+      display: block
+    }
+
+    .wide {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--bg);
+      margin-bottom: 24px
+    }
+
+    .wide svg {
+      width: auto;
+      height: 84%
+    }
+
+    .mth {
+      width: 120px;
+      margin-bottom: 16px
+    }
+
+    /* boutiques */
+    .shops {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(20px, 3vw, 40px)
+    }
+
+    .shop {
+      border-top: 2px solid var(--ink);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column
+    }
+
+    .shop h3 {
+      font-size: 36px;
+      margin-bottom: 12px
+    }
+
+    .shop address {
+      font-style: normal;
+      color: var(--mute);
+      min-height: 56px;
+      margin-bottom: 20px
+    }
+
+    .shop dl {
+      font-size: 15px;
+      border-top: 1px solid var(--line)
+    }
+
+    .shop dl div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .shop dt {
+      color: var(--mute)
+    }
+
+    .shop dd {
+      text-align: right
+    }
+
+    .shop .acts {
+      margin-top: 24px
+    }
+
+    .shop .btn {
+      padding: 11px 20px
+    }
+
+    @media(max-width:900px) {
+      .shops {
+        grid-template-columns: 1fr
+      }
+
+      .shop address {
+        min-height: 0
+      }
+    }
+
+    /* commission */
+    .commission {
+      background: var(--berry);
+      color: var(--on-berry)
+    }
+
+    .commission .wrap {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 48px;
+      align-items: end
+    }
+
+    .commission h2 {
+      font-size: clamp(40px, 6.4vw, 100px);
+      line-height: .96
+    }
+
+    .commission p {
+      opacity: .85;
+      margin-bottom: 28px;
+      max-width: 40ch
+    }
+
+    .commission .btn {
+      background: var(--on-berry);
+      color: var(--berry)
+    }
+
+    @media(max-width:820px) {
+      .commission .wrap {
+        grid-template-columns: 1fr
+      }
+    }
+
+    footer {
+      padding: 72px 0 40px
+    }
+
+    .fgrid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 56px
+    }
+
+    .fgrid h4 {
+      font: 500 14px/1.4 var(--sans);
+      margin-bottom: 14px
+    }
+
+    .fgrid p,
+    .fgrid a {
+      display: block;
+      color: var(--mute);
+      font-size: 15px;
+      margin-bottom: 6px
+    }
+
+    .fgrid a:hover {
+      color: var(--ink)
+    }
+
+    .fbot {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--mute)
+    }
+
+    @media(max-width:820px) {
+      .fgrid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    /* modal */
+    .ov {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(10, 3, 6, .6);
+      backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s, visibility .3s
+    }
+
+    .ov.open {
+      opacity: 1;
+      visibility: visible
+    }
+
+    .mod {
+      background: var(--bg);
+      width: min(560px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      border-radius: 20px;
+      padding: clamp(24px, 4vw, 44px);
+      position: relative;
+      transform: translateY(20px);
+      transition: transform .5s var(--ease)
+    }
+
+    .ov.open .mod {
+      transform: none
+    }
+
+    .x {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      font-size: 20px;
+      line-height: 1
+    }
+
+    .mod h3 {
+      font-size: 40px;
+      margin: 0 40px 6px 0
+    }
+
+    .mod .mp {
+      font: 400 24px var(--serif);
+      color: var(--berry);
+      margin-bottom: 24px
+    }
+
+    .mod label,
+    .mod .lb {
+      display: block;
+      font-size: 13px;
+      color: var(--mute);
+      margin: 18px 0 8px
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .chip {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 14px;
+      transition: all .2s
+    }
+
+    .chip:hover {
+      border-color: var(--ink)
+    }
+
+    .chip[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink)
+    }
+
+    .mod input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--bg2);
+      color: var(--ink);
+      font: inherit;
+      font-size: 15px
+    }
+
+    .mod input:focus {
+      outline: 2px solid var(--berry);
+      outline-offset: 1px
+    }
+
+    .mod .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: 26px;
+      padding: 16px
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap bar">
+      <a href="#top" class="logo" aria-label="Cakeberry home">Cakeberry</a>
+      <nav aria-label="Primary">
+        <a href="#craft">The house</a><a href="#menu">Menu</a><a href="#boutiques">Boutiques</a><a
+          href="#commission">Custom orders</a>
+      </nav>
+      <a class="btn" href="https://wa.me/919595627820?text=Hi%20Cakeberry%2C%20I%27d%20like%20to%20place%20an%20order."
+        target="_blank" rel="noopener">Order on WhatsApp</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="rise">
+            <h1>Cakes made slowly, <span>for days worth remembering.</span></h1>
+            <p class="lead">A 100% vegetarian pâtisserie and bakery in Nagpur. Bread baked before dawn, pastries
+              finished each morning, and celebration cakes made to order.</p>
+            <div class="acts">
+              <a class="btn" href="#menu">Browse the menu</a>
+              <a class="btn ghost" href="#boutiques">Find a boutique</a>
+            </div>
+          </div>
+          <div class="arch rise" style="animation-delay:.15s" aria-hidden="true">
+            <svg viewBox="0 0 300 330" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+              <path d="M150 20v34M150 54c-9-10-9-22 0-30 9 8 9 20 0 30z" />
+              <path d="M96 150V96h108v54M96 96c0-14 108-14 108 0" />
+              <path d="M60 240V150h180v90M60 150c0-16 180-16 180 0" />
+              <path d="M96 128c14 14 28-8 42 6s28-8 42 6 18-4 24-6" />
+              <path d="M60 196c18 16 36-8 54 8s36-8 54 8 36-8 54 8 12-4 18-8" />
+              <path d="M20 240h260M20 240v24c0 14 260 14 260 0v-24" />
+              <path d="M20 300h260" stroke-width=".8" />
+              <circle cx="132" cy="120" r="3" />
+              <circle cx="168" cy="116" r="3" />
+              <circle cx="104" cy="214" r="3" />
+              <circle cx="196" cy="216" r="3" />
+              <circle cx="150" cy="212" r="3" />
+            </svg>
+          </div>
+        </div>
+        <div class="facts">
+          <div><b>100% vegetarian</b>Every sponge, cream and loaf, without exception.</div>
+          <div><b>Three boutiques</b>Prem Nagar, Golibar Chowk and Sakkardara.</div>
+          <div><b>8:30 am to 11 pm</b>Open every day of the week.</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="craft" id="craft">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Three crafts, one kitchen.</h2>
+          <p>The same standards run through a morning loaf and a five-kilo wedding cake: good ingredients, patient
+            hands, nothing rushed.</p>
+        </div>
+        <div class="cols">
+          <div class="col">
+            <div class="th wide" data-art="loaf"></div>
+            <h3>Bakery</h3>
+            <p>Milk loaves, pav and rusks baked before the shops open, so the bread is still warm when it reaches you.
+            </p>
+            <ul>
+              <li>Milk loaf, brown bread, ladi pav</li>
+              <li>Jeera, cashew and butter cookies</li>
+              <li>Khari, twists and savoury puffs</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="th wide" data-art="wed"></div>
+            <h3>Cakes</h3>
+            <p>Birthdays, anniversaries and weddings. Each cake is made to order, from a soft sponge you can taste the
+              care in.</p>
+            <ul>
+              <li>Belgian chocolate and fresh cream sponges</li>
+              <li>Edible photo prints and themed designs</li>
+              <li>Multi-tier wedding centrepieces</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="th wide" data-art="dutch"></div>
+            <h3>Pastries</h3>
+            <p>Single portions with Dutch cocoa, fruit and mousse, finished each morning and chilled until you arrive.
+            </p>
+            <ul>
+              <li>Truffle slices, red velvet, fruit gateaux</li>
+              <li>Lava cups, donuts and cupcakes</li>
+              <li>Gift boxes for family and corporate gifting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>The menu</h2>
+          <p>Select any item to choose a size, pick your boutique and add a message. Your order goes straight to that
+            boutique on WhatsApp.</p>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter menu">
+          <button class="f" data-f="all" aria-pressed="true">All</button>
+          <button class="f" data-f="cake" aria-pressed="false">Cakes</button>
+          <button class="f" data-f="couture" aria-pressed="false">Custom and wedding</button>
+          <button class="f" data-f="pastry" aria-pressed="false">Pastries</button>
+          <button class="f" data-f="bakery" aria-pressed="false">Bakery</button>
+        </div>
+        <div id="list"></div>
+      </div>
+    </section>
+
+    <section class="craft" id="boutiques">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Visit us in Nagpur</h2>
+          <p>Three boutiques, each with its own line. Call or message the one nearest you.</p>
+        </div>
+        <div class="shops">
+          <article class="shop">
+            <h3>Prem Nagar</h3>
+            <address>Near Gajanan Mandir, NIT Garden, Prem Nagar, Nagpur</address>
+            <dl>
+              <div>
+                <dt>Phone</dt>
+                <dd><a href="tel:+919370627820">+91 93706 27820</a></dd>
+              </div>
+              <div>
+                <dt>Hours</dt>
+                <dd>8:30 am to 11 pm daily</dd>
+              </div>
+            </dl>
+            <div class="acts"><a class="btn ghost" href="tel:+919370627820">Call</a><a class="btn"
+                href="https://wa.me/919370627820?text=Hi%20Cakeberry%20Prem%20Nagar%2C%20I%27d%20like%20to%20order%20a%20cake."
+                target="_blank" rel="noopener">WhatsApp</a></div>
+          </article>
+          <article class="shop">
+            <h3>Golibar Chowk</h3>
+            <address>Opposite Samay Photo Studio, Golibar Chowk, Nagpur</address>
+            <dl>
+              <div>
+                <dt>Phone</dt>
+                <dd><a href="tel:+919595627820">+91 95956 27820</a></dd>
+              </div>
+              <div>
+                <dt>Hours</dt>
+                <dd>8:30 am to 11 pm daily</dd>
+              </div>
+            </dl>
+            <div class="acts"><a class="btn ghost" href="tel:+919595627820">Call</a><a class="btn"
+                href="https://wa.me/919595627820?text=Hi%20Cakeberry%20Golibar%20Chowk%2C%20I%27d%20like%20to%20order%20a%20cake."
+                target="_blank" rel="noopener">WhatsApp</a></div>
+          </article>
+          <article class="shop">
+            <h3>Sakkardara</h3>
+            <address>Near Sakkardara Square, Nandanvan corridor, Nagpur</address>
+            <dl>
+              <div>
+                <dt>Phone</dt>
+                <dd><a href="tel:+918855887721">+91 88558 87721</a></dd>
+              </div>
+              <div>
+                <dt>Hours</dt>
+                <dd>8:30 am to 11 pm daily</dd>
+              </div>
+            </dl>
+            <div class="acts"><a class="btn ghost" href="tel:+918855887721">Call</a><a class="btn"
+                href="https://wa.me/918855887721?text=Hi%20Cakeberry%20Sakkardara%2C%20I%27d%20like%20to%20order%20a%20cake."
+                target="_blank" rel="noopener">WhatsApp</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="commission" id="commission">
+      <div class="wrap">
+        <h2>Planning a wedding, gala or milestone?</h2>
+        <div>
+          <p>Talk to our pastry chefs about flavours, tiers and design. We arrange tastings and deliver across Nagpur.
+          </p>
+          <a class="btn"
+            href="https://wa.me/919595627820?text=Hi%20Cakeberry%2C%20I%27d%20like%20to%20discuss%20a%20custom%20order%20with%20your%20pastry%20chef."
+            target="_blank" rel="noopener">Talk to our pastry chef</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="logo" style="margin-bottom:12px">Cakeberry</div>
+          <p>जन्मदिन की खुशियाँ मनाओ हरदिन…</p>
+          <p>100% vegetarian pâtisserie and bakery, Nagpur.</p>
+        </div>
+        <div>
+          <h4>Menu</h4><a href="#menu">Cakes</a><a href="#menu">Pastries</a><a href="#menu">Bakery</a><a
+            href="#menu">Custom and wedding</a>
+        </div>
+        <div>
+          <h4>Boutiques</h4>
+          <p>Prem Nagar<br>93706 27820</p>
+          <p>Golibar Chowk<br>95956 27820</p>
+          <p>Sakkardara<br>88558 87721</p>
+        </div>
+        <div>
+          <h4>Enquiries</h4><a href="tel:+919595627820">+91 95956 27820</a><a href="tel:07122778838">Landline 0712
+            2778838</a>
+          <p>Open daily, 8:30 am to 11 pm</p>
+        </div>
+      </div>
+      <div class="fbot"><span>© 2026 Cakeberry, Nagpur, Maharashtra</span><button id="theme" type="button">Switch light
+          or dark</button></div>
+    </div>
+  </footer>
+
+  <div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <div class="mod">
+      <button class="x" id="x" type="button" aria-label="Close">&times;</button>
+      <div class="th mth" id="mimg"></div>
+      <h3 id="mt"></h3>
+      <div class="mp" id="mpr"></div>
+      <span class="lb">Size</span>
+      <div class="chips" id="sizes"></div>
+      <span class="lb">Collect from</span>
+      <div class="chips" id="shops">
+        <button type="button" class="chip" data-n="Prem Nagar" data-p="9370627820" aria-pressed="true">Prem
+          Nagar</button>
+        <button type="button" class="chip" data-n="Golibar Chowk" data-p="9595627820" aria-pressed="false">Golibar
+          Chowk</button>
+        <button type="button" class="chip" data-n="Sakkardara" data-p="8855887721"
+          aria-pressed="false">Sakkardara</button>
+      </div>
+      <label for="msg">Message on the cake (optional)</label>
+      <input id="msg" type="text" placeholder="Happy anniversary, Mum and Dad" maxlength="60">
+      <a class="btn" id="go" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    const ITEMS = [
+      { id: 'truffle', c: 'cake', n: 'Belgian truffle cake', p: '₹480', l: 'from 0.5 kg', d: 'Dark chocolate sponge with a rich Belgian chocolate ganache.', s: ['0.5 kg', '1 kg', '1.5 kg', '2 kg or more'] },
+      { id: 'bf', c: 'cake', n: 'Black forest gâteau', p: '₹390', l: 'from 0.5 kg', d: 'Vanilla cream, cherry compote and dark chocolate shavings.', s: ['0.5 kg', '1 kg', '1.5 kg', '2 kg'] },
+      { id: 'pine', c: 'cake', n: 'Pineapple fresh cream cake', p: '₹360', l: 'from 0.5 kg', d: 'Soft vanilla sponge, golden pineapple and light fresh cream.', s: ['0.5 kg', '1 kg', '1.5 kg', '2 kg'] },
+      { id: 'rv', c: 'cake', n: 'Red velvet with mascarpone', p: '₹520', l: 'from 0.5 kg', d: 'Crimson cocoa sponge under tangy cream cheese frosting.', s: ['0.5 kg', '1 kg', '1.5 kg', '2 kg'] },
+      { id: 'photo', c: 'couture', n: 'Edible photo cake', p: '₹580', l: 'from 0.5 kg', d: 'Your photograph printed on an edible wafer and framed in cream.', s: ['1 kg', '1.5 kg', '2 kg', '3 kg or more'] },
+      { id: 'wed', c: 'couture', n: 'Multi-tier wedding cake', p: '₹2,699', l: 'from 3 kg', d: 'Tiered sugarcraft with edible gold leaf and hand-piped florals.', s: ['2 tier (3 kg)', '3 tier (5 kg)', 'Custom height'] },
+      { id: 'dutch', c: 'pastry', n: 'Dutch ganache pastry', p: '₹65', l: 'per slice', d: 'A single layered slice of chocolate, made fresh each morning.', s: ['1 slice', 'Box of 4', 'Box of 6'] },
+      { id: 'loaf', c: 'bakery', n: 'Milk sandwich loaf', p: '₹45', l: 'per 400 g loaf', d: 'Soft milk bread and ladi pav, baked every morning without egg.', s: ['Milk loaf (400 g)', 'Brown bread loaf', 'Ladi pav pack'] }
+    ];
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    const S = x => '<svg viewBox="0 0 120 120" aria-hidden="true"><ellipse cx="60" cy="102" rx="46" ry="6" fill="rgba(0,0,0,.14)"/>' + x + '</svg>';
+    const layer = (sp, fr, tp) => '<rect x="20" y="52" width="80" height="48" rx="7" fill="' + sp + '"/><rect x="20" y="74" width="80" height="6" fill="' + fr + '"/><path d="M20 60a8 8 0 0 1 8-8h64a8 8 0 0 1 8 8v6c-8 8-12-2-20 4s-12-2-20 4-12-2-20 4-12-2-20 4-4-4-4-4z" fill="' + fr + '"/><circle cx="60" cy="44" r="7" fill="' + tp + '"/><path d="M60 37c0-6 4-8 7-9" stroke="#3A6B35" stroke-width="2.5" fill="none" stroke-linecap="round"/>';
+    const ART = {
+      truffle: S(layer('#4A2318', '#2B120C', '#A4162F')),
+      bf: S(layer('#4A2318', '#F6EDE4', '#A4162F')),
+      pine: S(layer('#F1DDB0', '#FBF3E4', '#E9C46A')),
+      rv: S(layer('#8E1B2E', '#F6EDE4', '#8E1B2E')),
+      photo: S(layer('#F3E6D8', '#FBF3E4', '#C8A96A') + '<rect x="42" y="76" width="36" height="20" rx="3" fill="#EAD7CB" stroke="#6A1128" stroke-width="2"/><circle cx="60" cy="83" r="4" fill="#6A1128"/><path d="M51 95c2-7 16-7 18 0z" fill="#6A1128"/>'),
+      wed: S('<rect x="18" y="72" width="84" height="28" rx="5" fill="#F6EDE4"/><rect x="30" y="48" width="60" height="24" rx="5" fill="#EFE0D6"/><rect x="42" y="30" width="36" height="18" rx="4" fill="#F6EDE4"/><rect x="18" y="82" width="84" height="4" fill="#C8A96A"/><rect x="30" y="58" width="60" height="3" fill="#C8A96A"/><rect x="42" y="38" width="36" height="3" fill="#C8A96A"/><circle cx="60" cy="24" r="5" fill="#6A1128"/>'),
+      dutch: S('<path d="M16 96V60l88-14v50z" fill="#4A2318"/><path d="M16 78l88-14v8L16 86z" fill="#F3E6D8"/><path d="M16 60l88-14 6 7-88 14z" fill="#2B120C"/><circle cx="96" cy="40" r="6" fill="#A4162F"/>'),
+      loaf: S('<path d="M16 82c-4-22 10-36 44-36s48 14 44 36c0 8-4 16-12 16H28c-8 0-12-8-12-16z" fill="#C98B4B"/><path d="M38 60l8 14M60 56l8 16M82 60l8 14" stroke="#E7B97A" stroke-width="4" stroke-linecap="round"/>')
+    };
+    document.querySelectorAll('[data-art]').forEach(e => { e.innerHTML = ART[e.dataset.art] });
+    const list = $('#list');
+    function render(f) {
+      list.innerHTML = '';
+      ITEMS.filter(i => f === 'all' || i.c === f).forEach(i => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'row'; b.dataset.id = i.id;
+        b.innerHTML = '<span class="th"></span><span><span class="rn"></span><span class="rd"></span></span><span class="rp"></span><span class="rc">Order</span>';
+        b.querySelector('.th').innerHTML = ART[i.id]; b.querySelector('.rn').textContent = i.n; b.querySelector('.rd').textContent = i.d;
+        const p = b.querySelector('.rp'); p.textContent = i.p; const s = document.createElement('small'); s.textContent = i.l; p.appendChild(s);
+        list.appendChild(b);
+      });
+    }
+    render('all');
+    $('#filters').addEventListener('click', e => {
+      const b = e.target.closest('.f'); if (!b) return;
+      $$('.f').forEach(x => x.setAttribute('aria-pressed', x === b)); render(b.dataset.f)
+    });
+
+    let cur = ITEMS[0], size = '', shop = { n: 'Prem Nagar', p: '9370627820' }, last = null;
+    const ov = $('#ov'), msg = $('#msg'), go = $('#go');
+    function sync() {
+      const m = msg.value.trim();
+      let t = 'Hello Cakeberry ' + shop.n + ',\n\nI’d like to order:\n• ' + cur.n + '\n• Size: ' + size + '\n• 100% vegetarian';
+      if (m) t += '\n• Message on cake: "' + m + '"';
+      t += '\n\nPlease confirm availability and pickup or delivery time. Thank you.';
+      go.href = 'https://wa.me/91' + shop.p + '?text=' + encodeURIComponent(t);
+    }
+    list.addEventListener('click', e => {
+      const r = e.target.closest('.row'); if (!r) return; last = r;
+      cur = ITEMS.find(i => i.id === r.dataset.id);
+      $('#mimg').innerHTML = ART[cur.id]; $('#mt').textContent = cur.n; $('#mpr').textContent = cur.p + ', ' + cur.l;
+      const box = $('#sizes'); box.innerHTML = '';
+      cur.s.forEach((s, k) => {
+        const c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.textContent = s; c.setAttribute('aria-pressed', k === 0);
+        c.onclick = () => { $$('#sizes .chip').forEach(x => x.setAttribute('aria-pressed', x === c)); size = s; sync() }; box.appendChild(c)
+      });
+      size = cur.s[0]; sync(); ov.classList.add('open'); document.body.style.overflow = 'hidden'; $('#x').focus();
+    });
+    $('#shops').addEventListener('click', e => {
+      const c = e.target.closest('.chip'); if (!c) return;
+      $$('#shops .chip').forEach(x => x.setAttribute('aria-pressed', x === c)); shop = { n: c.dataset.n, p: c.dataset.p }; sync()
+    });
+    msg.addEventListener('input', sync);
+    function close() { ov.classList.remove('open'); document.body.style.overflow = ''; if (last) last.focus() }
+    $('#x').onclick = close; ov.addEventListener('click', e => { if (e.target === ov) close() });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && ov.classList.contains('open')) close() });
+    $('#theme').onclick = () => {
+      const r = document.documentElement;
+      const dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+      r.dataset.theme = dark ? 'light' : 'dark'
+    };
+  </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Cakeberry","telephone":"+91-95956-27820","servesCuisine":"100% vegetarian cakes, pastries and bread","openingHours":"Mo-Su 08:30-23:00","address":{"@type":"PostalAddress","addressLocality":"Nagpur","addressRegion":"Maharashtra","addressCountry":"IN"}}
+</script>
+</body>
+
+</html>
